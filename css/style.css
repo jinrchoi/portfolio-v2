@@ -1,0 +1,354 @@
+/* ========================================
+   Site settings
+   ======================================== */
+
+:root {
+  --background: #ffffff;
+  --text: #202020;
+  --secondary-text: #686868;
+  --line: #dedede;
+  --accent: #b74752;
+
+  --page-width: 1180px;
+  --reading-width: 780px;
+}
+
+
+/* ========================================
+   Basic reset
+   ======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background-color: var(--background);
+  font-family:
+    Inter,
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+
+
+/* ========================================
+   Header
+   ======================================== */
+
+.site-header {
+  width: min(var(--page-width), calc(100% - 96px));
+  min-height: 190px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 60px;
+}
+
+.site-name {
+  justify-self: start;
+
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.contact-link {
+  justify-self: end;
+
+  color: var(--secondary-text);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+
+/* ========================================
+   Hand-drawn SVG navigation
+   ======================================== */
+
+.main-navigation {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(90px, 140px));
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.nav-item {
+  min-width: 0;
+  min-height: 90px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+}
+
+/*
+  The complete handwritten word is contained inside each SVG.
+  object-fit: contain prevents the artwork from being cropped.
+*/
+
+.nav-icon {
+  width: 130px;
+  height: 80px;
+  object-fit: contain;
+
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+.nav-item:hover .nav-icon {
+  opacity: 0.72;
+  transform: translateY(-4px) rotate(-2deg);
+}
+
+.nav-item:nth-child(2):hover .nav-icon {
+  transform: translateY(-4px) rotate(2deg);
+}
+
+.nav-item:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+}
+
+
+/* ========================================
+   Main content
+   ======================================== */
+
+main {
+  width: min(var(--reading-width), calc(100% - 96px));
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   Introduction
+   ======================================== */
+
+.introduction {
+  min-height: 70vh;
+  padding: 120px 0 170px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(190px, 0.6fr);
+  align-items: center;
+  gap: 90px;
+}
+
+.introduction-text {
+  min-width: 0;
+}
+
+.eyebrow {
+  margin: 0 0 24px;
+
+  color: var(--secondary-text);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0 0 30px;
+
+  font-size: clamp(3.25rem, 8vw, 6.5rem);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.opening {
+  max-width: 580px;
+  margin: 0;
+
+  color: var(--secondary-text);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.6;
+}
+
+.portrait {
+  margin: 0;
+}
+
+.portrait img {
+  width: 100%;
+  height: auto;
+  filter: grayscale(100%);
+}
+
+
+/* ========================================
+   About and contact sections
+   ======================================== */
+
+.content-section {
+  padding: 120px 0;
+  border-top: 1px solid var(--line);
+}
+
+.content-section h2 {
+  margin: 0 0 48px;
+
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.content-section p {
+  max-width: 680px;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.professional-links {
+  margin: 36px 0 0;
+  padding: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+
+  list-style: none;
+}
+
+
+/* ========================================
+   Footer
+   ======================================== */
+
+.site-footer {
+  width: min(var(--page-width), calc(100% - 96px));
+  margin: 0 auto;
+  padding: 60px 0;
+
+  color: var(--secondary-text);
+  font-size: 0.75rem;
+}
+
+
+/* ========================================
+   Mobile layout
+   ======================================== */
+
+@media (max-width: 700px) {
+  .site-header {
+    width: calc(100% - 32px);
+    min-height: auto;
+    padding: 28px 0 42px;
+
+    grid-template-columns: 1fr auto;
+    gap: 30px 20px;
+  }
+
+  .site-name {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .contact-link {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  /*
+    The navigation is not hidden inside a menu.
+    All three drawings remain visible in one row.
+  */
+
+  .main-navigation {
+    width: 100%;
+
+    grid-column: 1 / -1;
+    grid-row: 2;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .nav-item {
+    min-height: 70px;
+  }
+
+  .nav-icon {
+    width: 100%;
+    max-width: 95px;
+    height: 64px;
+  }
+
+  main {
+    width: calc(100% - 40px);
+  }
+
+  .introduction {
+    min-height: auto;
+    padding: 90px 0 120px;
+
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .portrait {
+    width: min(70%, 280px);
+  }
+
+  .content-section {
+    padding: 90px 0;
+  }
+
+  .site-footer {
+    width: calc(100% - 40px);
+  }
+}
+
+
+/* ========================================
+   Accessibility: reduce animation
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .nav-icon {
+    transition: none;
+  }
+}
