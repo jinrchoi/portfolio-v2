@@ -352,3 +352,109 @@ h1 {
     transition: none;
   }
 }
+
+
+/* ========================================
+   More compact desktop spacing
+   ======================================== */
+
+@media (min-width: 701px) {
+  .site-header {
+    min-height: 150px;
+  }
+
+  .content-section {
+    padding: 72px 0;
+  }
+
+  .site-footer {
+    padding: 42px 0;
+  }
+}
+
+
+/* ========================================
+   Homepage profile
+   ======================================== */
+
+.home-profile {
+  padding: 90px 0 80px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(180px, 0.5fr);
+  align-items: center;
+  gap: 72px;
+}
+
+.home-profile-text {
+  min-width: 0;
+}
+
+.home-profile-text p {
+  max-width: 620px;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.home-profile-text p:not(.eyebrow) {
+  font-size: 1.05rem;
+}
+
+.home-profile .portrait img {
+  width: 100%;
+  height: auto;
+}
+
+
+/* ========================================
+   Hand-drawn page titles
+   ======================================== */
+
+.page-title-image {
+  width: 220px;
+  max-width: 55%;
+  height: 100px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+
+/* ========================================
+   List spacing on secondary pages
+   ======================================== */
+
+.content-section ul {
+  margin: 24px 0 0;
+  padding-left: 1.25rem;
+}
+
+.content-section li {
+  margin-bottom: 16px;
+}
+
+
+/* ========================================
+   Mobile adjustments
+   ======================================== */
+
+@media (max-width: 700px) {
+  .home-profile {
+    padding: 70px 0 75px;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .home-profile .portrait {
+    width: min(68%, 260px);
+  }
+
+  .page-title-image {
+    width: 170px;
+    max-width: 65%;
+    height: 80px;
+  }
+
+  .content-section {
+    padding: 70px 0;
+  }
+}
