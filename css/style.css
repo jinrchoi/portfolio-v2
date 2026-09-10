@@ -223,12 +223,12 @@ main {
    ======================================== */
 
 .content-section {
-  padding: 68px 0;
+  padding: 34px 0;
   border-top: 1px solid var(--line);
 }
 
 .content-section h2 {
-  margin: 0 0 36px;
+  margin: 0 0 18px;
 
   font-size: 0.78rem;
   font-weight: 600;
@@ -387,11 +387,11 @@ main {
   }
 
   .content-section {
-    padding: 65px 0;
+    padding: 32px 0;
   }
 
   .content-section h2 {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
   }
 
   .page-title-image {
