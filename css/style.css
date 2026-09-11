@@ -7,7 +7,7 @@
   --text: #202020;
   --secondary-text: #686868;
   --line: #dedede;
-  --accent: #b74752;
+  --accent: #444444;
 
   --page-width: 1180px;
   --reading-width: 880px;
@@ -57,8 +57,9 @@ a:hover {
   color: var(--accent);
 }
 
-a:focus-visible {
-  outline: 2px solid var(--accent);
+a:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--text);
   outline-offset: 5px;
 }
 
@@ -68,6 +69,8 @@ a:focus-visible {
    ======================================== */
 
 .site-header {
+  position: relative;
+
   width: min(var(--page-width), calc(100% - 96px));
   min-height: 120px;
   margin: 0 auto;
@@ -97,7 +100,7 @@ a:focus-visible {
 
 
 /* ========================================
-   Hand-drawn SVG navigation
+   Desktop SVG navigation
    ======================================== */
 
 .main-navigation {
@@ -140,8 +143,17 @@ a:focus-visible {
 
 .nav-item:focus-visible {
   border-radius: 4px;
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--text);
   outline-offset: 5px;
+}
+
+
+/* ========================================
+   Mobile menu
+   ======================================== */
+
+.mobile-menu {
+  display: none;
 }
 
 
@@ -156,7 +168,7 @@ main {
 
 
 /* ========================================
-   Homepage profile: desktop
+   Homepage profile
    ======================================== */
 
 .home-profile {
@@ -192,6 +204,11 @@ main {
   text-transform: uppercase;
 }
 
+/*
+  The homepage biography remains restricted
+  to the left side of the profile grid.
+*/
+
 .profile-biography p {
   max-width: 620px;
   margin-top: 0;
@@ -214,6 +231,7 @@ main {
 .home-profile .portrait img {
   width: 100%;
   height: auto;
+  filter: none;
 }
 
 
@@ -242,8 +260,14 @@ main {
   font-weight: 600;
 }
 
+/*
+  Paragraphs in regular content sections
+  fill the same available width as lists.
+*/
+
 .content-section p {
-  max-width: 680px;
+  width: 100%;
+  max-width: none;
   margin-top: 0;
   margin-bottom: 16px;
 }
@@ -253,6 +277,7 @@ main {
 }
 
 .content-section ul {
+  width: 100%;
   margin: 14px 0 0;
   padding-left: 1.25rem;
 }
@@ -320,12 +345,13 @@ main {
 
 @media (max-width: 700px) {
   .site-header {
-    width: calc(100% - 32px);
+    width: calc(100% - 40px);
     min-height: auto;
-    padding: 20px 0 24px;
+    padding: 22px 0;
 
+    display: grid;
     grid-template-columns: 1fr auto;
-    gap: 18px 16px;
+    gap: 0;
   }
 
   .site-name {
@@ -333,33 +359,86 @@ main {
     grid-row: 1;
   }
 
+  /*
+    Hide the desktop navigation and
+    desktop Contact link.
+  */
+
+  .main-navigation,
   .contact-link {
-    grid-column: 2;
-    grid-row: 1;
+    display: none;
   }
 
   /*
-    The three navigation images remain
-    visible together on mobile.
+    Show the Menu control.
   */
 
-  .main-navigation {
-    width: 100%;
+  .mobile-menu {
+    display: block;
 
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  .mobile-menu summary {
+    color: var(--secondary-text);
+    font-size: 0.85rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .mobile-menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-menu summary::marker {
+    content: "";
+  }
+
+  .mobile-menu summary::after {
+    content: "+";
+    margin-left: 8px;
+  }
+
+  .mobile-menu[open] summary::after {
+    content: "−";
+  }
+
+  /*
+    Expand the open menu across the
+    full header width.
+  */
+
+  .mobile-menu[open] {
     grid-column: 1 / -1;
-    grid-row: 2;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .nav-item {
-    min-height: 56px;
-  }
-
-  .nav-icon {
     width: 100%;
-    max-width: 82px;
-    height: 50px;
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  .mobile-menu[open] summary {
+    grid-column: 2;
+    justify-self: end;
+  }
+
+  .mobile-menu-links {
+    grid-column: 1 / -1;
+
+    margin-top: 24px;
+    padding: 22px 0 4px;
+    border-top: 1px solid var(--line);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .mobile-menu-links a {
+    font-size: 1.15rem;
+    text-decoration: none;
   }
 
   main {
@@ -368,8 +447,8 @@ main {
 
   /*
     Mobile homepage order:
-    1. Researcher · Lecturer · Literary Translator
-    2. Portrait
+    1. Role
+    2. Photograph
     3. Biography
   */
 
@@ -388,6 +467,10 @@ main {
   .home-profile .portrait {
     width: min(68%, 250px);
     justify-self: start;
+  }
+
+  .home-profile .portrait img {
+    filter: none;
   }
 
   .profile-biography p {
@@ -409,10 +492,13 @@ main {
   }
 
   .content-section p {
+    width: 100%;
+    max-width: none;
     margin-bottom: 14px;
   }
 
   .content-section ul {
+    width: 100%;
     margin-top: 12px;
   }
 
