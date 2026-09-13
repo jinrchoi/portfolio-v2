@@ -20,55 +20,54 @@
 
 <body>
   <header class="site-header">
-    <a class="site-name" href="index.html">
-      Jin R. Choi
+  <a class="site-name" href="index.html">
+    Jin R. Choi
+  </a>
+
+  <!-- Visible on desktop -->
+  <nav class="main-navigation" aria-label="Main navigation">
+    <a class="nav-item" href="research.html">
+      <img
+        class="nav-icon"
+        src="images/icons/research.svg"
+        alt="Research"
+      >
     </a>
 
-    <nav class="main-navigation" aria-label="Main navigation">
-      <!-- Research navigation drawing -->
-      <a
-        class="nav-item"
-        href="research.html"
-        aria-label="Research"
+    <a class="nav-item" href="teaching.html">
+      <img
+        class="nav-icon"
+        src="images/icons/teaching.svg"
+        alt="Teaching"
       >
-        <img
-          class="nav-icon"
-          src="images/icons/research.svg"
-          alt="Research"
-        >
-      </a>
+    </a>
 
-      <!-- Teaching navigation drawing -->
-      <a
-        class="nav-item"
-        href="teaching.html"
-        aria-label="Teaching"
+    <a class="nav-item" href="translation.html">
+      <img
+        class="nav-icon"
+        src="images/icons/translation.svg"
+        alt="Translation"
       >
-        <img
-          class="nav-icon"
-          src="images/icons/teaching.svg"
-          alt="Teaching"
-        >
-      </a>
+    </a>
+  </nav>
 
-      <!-- Translation navigation drawing -->
-      <a
-        class="nav-item"
-        href="translation.html"
-        aria-label="Translation"
-      >
-        <img
-          class="nav-icon"
-          src="images/icons/translation.svg"
-          alt="Translation"
-        >
-      </a>
+  <!-- Visible on desktop -->
+  <a class="contact-link" href="#contact">
+    Contact
+  </a>
+
+  <!-- Visible only on mobile -->
+  <details class="mobile-menu">
+    <summary>Menu</summary>
+
+    <nav class="mobile-menu-links" aria-label="Mobile navigation">
+      <a href="research.html">Research</a>
+      <a href="teaching.html">Teaching</a>
+      <a href="translation.html">Translation</a>
+      <a href="#contact">Contact</a>
     </nav>
-
-    <a class="contact-link" href="#contact">
-      Contact
-    </a>
-  </header>
+  </details>
+</header>
 
 <main>
   <section class="home-profile" id="about">
