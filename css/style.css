@@ -1,22 +1,12 @@
-/* ========================================
-   Site settings
-   ======================================== */
-
 :root {
-  --background: #ffffff;
+  --background: #fff;
   --text: #202020;
   --secondary-text: #686868;
   --line: #dedede;
-  --accent: #444444;
-
+  --accent: #444;
   --page-width: 1180px;
   --reading-width: 880px;
 }
-
-
-/* ========================================
-   Basic reset
-   ======================================== */
 
 * {
   box-sizing: border-box;
@@ -29,15 +19,8 @@ html {
 body {
   margin: 0;
   color: var(--text);
-  background-color: var(--background);
-
-  font-family:
-    Inter,
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    sans-serif;
-
+  background: var(--background);
+  font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.58;
 }
@@ -70,7 +53,6 @@ summary:focus-visible {
 
 .site-header {
   position: relative;
-
   width: min(var(--page-width), calc(100% - 96px));
   min-height: 120px;
   margin: 0 auto;
@@ -83,7 +65,6 @@ summary:focus-visible {
 
 .site-name {
   justify-self: start;
-
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -92,7 +73,6 @@ summary:focus-visible {
 
 .contact-link {
   justify-self: end;
-
   color: var(--secondary-text);
   font-size: 0.85rem;
   text-decoration: none;
@@ -148,9 +128,7 @@ summary:focus-visible {
 }
 
 
-/* ========================================
-   Mobile menu
-   ======================================== */
+/* Hidden on desktop */
 
 .mobile-menu {
   display: none;
@@ -204,15 +182,9 @@ main {
   text-transform: uppercase;
 }
 
-/*
-  The homepage biography remains restricted
-  to the left side of the profile grid.
-*/
-
 .profile-biography p {
   max-width: 620px;
-  margin-top: 0;
-  margin-bottom: 16px;
+  margin: 0 0 16px;
   font-size: 1.05rem;
 }
 
@@ -222,7 +194,6 @@ main {
 
 .home-profile .portrait {
   grid-area: portrait;
-
   width: 240px;
   margin: 0;
   justify-self: end;
@@ -255,21 +226,14 @@ main {
 
 .content-section h3 {
   margin: 24px 0 10px;
-
   font-size: 1rem;
   font-weight: 600;
 }
 
-/*
-  Paragraphs in regular content sections
-  fill the same available width as lists.
-*/
-
 .content-section p {
   width: 100%;
   max-width: none;
-  margin-top: 0;
-  margin-bottom: 16px;
+  margin: 0 0 16px;
 }
 
 .content-section p:last-child {
@@ -347,21 +311,28 @@ main {
   .site-header {
     width: calc(100% - 40px);
     min-height: auto;
+    margin: 0 auto;
     padding: 22px 0;
 
     display: grid;
     grid-template-columns: 1fr auto;
+    align-items: start;
     gap: 0;
   }
+
+  /*
+    Keep the name in the upper-left.
+  */
 
   .site-name {
     grid-column: 1;
     grid-row: 1;
+    align-self: start;
+    z-index: 1;
   }
 
   /*
-    Hide the desktop navigation and
-    desktop Contact link.
+    Hide the desktop navigation and Contact.
   */
 
   .main-navigation,
@@ -370,20 +341,28 @@ main {
   }
 
   /*
-    Show the Menu control.
+    The Menu element spans the header,
+    while the button stays upper-right.
   */
 
   .mobile-menu {
     display: block;
 
-    grid-column: 2;
+    grid-column: 1 / -1;
     grid-row: 1;
-    justify-self: end;
+
+    width: 100%;
+    margin: 0;
   }
 
   .mobile-menu summary {
+    width: max-content;
+    margin-left: auto;
+
     color: var(--secondary-text);
     font-size: 0.85rem;
+    line-height: 1.58;
+
     cursor: pointer;
     list-style: none;
   }
@@ -406,26 +385,13 @@ main {
   }
 
   /*
-    Expand the open menu across the
-    full header width.
+    The menu links begin below the name and
+    Menu button. Opening the menu expands the
+    header and pushes the main page downward.
   */
 
-  .mobile-menu[open] {
-    grid-column: 1 / -1;
-    width: 100%;
-
-    display: grid;
-    grid-template-columns: 1fr auto;
-  }
-
-  .mobile-menu[open] summary {
-    grid-column: 2;
-    justify-self: end;
-  }
-
   .mobile-menu-links {
-    grid-column: 1 / -1;
-
+    width: 100%;
     margin-top: 24px;
     padding: 22px 0 4px;
     border-top: 1px solid var(--line);
@@ -438,6 +404,7 @@ main {
 
   .mobile-menu-links a {
     font-size: 1.15rem;
+    line-height: 1.4;
     text-decoration: none;
   }
 
